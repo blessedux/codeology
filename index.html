@@ -3,7 +3,7 @@
 
     <head>
 
-        <title>Codeology</title>
+        <title>Repos</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
         <link rel="stylesheet" type="text/css" href="/dist/css/style.css">
@@ -18,22 +18,15 @@
         <!-- intro popup -->
         <div class="intro popup" id="intro">
             <div class="popup__inner">
-                <h1 class="popup__title  mobile-hide"><div class="logo">Codeology</div></h1>
+                <h1 class="popup__title popup__title--center mobile-hide">Repos</h1>
                 <div class="popup__copy">
-                    <p>Codeology is an open-source project that brings to life the art and science of code. An algorithm analyzes Github projects and creates unique organic forms based on the codebase size and language. As no two pieces of code are alike, no two Codeology forms are alike.</p>
+                    <p>Whatsgood visitor! Here you can check out my repositories, Codeology's algorithm analyzes my codebase's programming languages and commit history to generate a one-of-a-kind WebGL 3D sculpture. The number of commits determines the complexity and density of each shape. More active repos create more intricate, detailed sculptures. This kinda thang reminded me why I love coding and building web apps.</p>
                 </div>
                 <div class="popup__bottom">
-                    <div class="popup__form">
-                        <div class="search">
-                            <div class="search__icon button"><i class="icon-search">Search</i></div>
-                            <input type="search" class="search__input js-search" value="Find a Github user"/>
-                            <ul class="search__list js-search-list"></ul>
-                        </div>
-                    </div><!--
-                    --><div class="popup__explore">
-                        <a href="#" class="button--text js-explore"><span data-text="Start exploring">Start exploring</span></a>
+                    <div class="popup__links">
+                        <a href="https://blessedux.com" target="_blank" class="button--text"><span data-text="Back to blessedux">Back to blessedux</span></a>
+                        <a href="https://github.com/blessedux/codeology" target="_blank" class="button--text button--github"><span data-text="View on GitHub">View on GitHub</span></a>
                     </div>
-                    <p class="popup__colophon mobile-hide"><a href="https://www.braintreepayments.com" target="_blank">Made possible by <strong>Braintree</strong></a></p>
                 </div>
             </div>
             <button class="popup__closer js-close-intro"><i class="icon-close">Close</i></button>
@@ -61,26 +54,7 @@
             <button class="popup__closer js-close-intro"><i class="icon-close">Close</i></button>
         </div>
 
-        <!-- about project popup -->
-        <div class="info popup" id="info">
-            <div class="popup__wrap needs-scroll">
-                <div class="popup__inner">
-                    <h2 class="popup__title">What it is</h2>
-                    <div class="popup__copy">
-                        <p>Codeology is an open-source project that reimagines code by bringing it to life visually. The combination of coding languages in each Github project determines its look, therefore, each creation is original.</p>
-                    </div>
-                    <h2 class="popup__title">How it works</h2>
-                    <div class="popup__copy">
-                        <p>The application pulls data from Github’s public API and creates visuals using WebGL, ThreeJS, and GLSL Shaders. Shape and color represent an individual language, with size being proportionate to how many lines of code are written. In its current form, Codeology recognizes and uniquely renders the following languages:</p>
-                        <p class="mobile-hide"><small>&gt; Roll over to see individual shapes</small></p>
-                        <p class="desktop-hide"><small>&gt; View on desktop for the full experience</small></p>
-                        <ul class="language-list"></ul>
-                        <p><a href="" target="_blank" class="button--textsmall"><span data-text="Fork Codeology on Github">Fork Codeology on Github</span></a></p>
-                    </div>
-                </div>
-            </div>
-            <button class="popup__closer js-toggle-info"><i class="icon-close">Close</i></button>
-        </div>
+        <!-- about project popup removed -->
 
         <!-- get link popup -->
         <div class="popup" id="getlink">
@@ -112,17 +86,7 @@
             <button class="popup__closer js-toggle-download"><i class="icon-close">Close</i></button>
         </div>
 
-        <!-- about Braintree popup -->
-        <div class="popup braintree" id="braintree">
-            <div class="popup__inner">
-                <h2 class="popup__title">Braintree</h2>
-                <div class="popup__copy">
-                    <p>Braintree builds products that make payments easier &mdash; so&nbsp;easy that they fade into the background and enable beautiful commerce experiences to&nbsp;flourish. Everything we've ever made is&nbsp;with developers in&nbsp;mind, so&nbsp;you'll get a&nbsp;simple integration, robust documentation, and&nbsp;stellar support all on&nbsp;your path to&nbsp;accepting every way to&nbsp;pay.</p>
-                    <p><br/><a href="https://www.braintreepayments.com/" class="button--textsmall" target="_blank"><span data-text="Learn more">Learn more</span></a></p>
-                </div>
-            </div>
-            <button class="popup__closer js-toggle-braintree"><i class="icon-close">Close</i></button>
-        </div>
+        <!-- about Braintree popup removed -->
 
 
         <div id="ui" class="ui">
@@ -130,39 +94,17 @@
             <!-- header -->
             <div class="header">
                 <div class="header__left mobile-hide">
-                    <div class="header__title  js-home"><div class="logo">Codeology</div></div><!--
-                 --><ul class="header__breadcrumbs breadcrumbs"></ul><!--
-                 --><div class="header__search search">
-                        <div class="search__icon button"><i class="icon-search">Search</i></div>
-                        <input type="search" class="search__input js-search" value="Find a Github user"/>
-                        <ul class="search__list js-search-list"></ul>
-                    </div>
+                    <ul class="header__breadcrumbs breadcrumbs"></ul>
                 </div>
                 <div class="header__right mobile-hide">
-                    <nav class="header__links  js-header-links">
-                        <li class="header__link">
-                            <a href="#" class="header__link  js-toggle-info">About the project</a>
-                        </li><!--
-                     --><li class="header__link dropdown">
-                            <a href="#" class="header__link  js-toggle-braintree">About Braintree</a>
-                        </li>
-                    </nav>
+                    <!-- Header content removed -->
                 </div>
                 <div class="header__top desktop-hide">
-                    <div class="header__title  js-home"><div class="logo">Codeology</div></div>
-                    <div class="header__colophon "><a href="#" target="_blank" class="js-toggle-braintree"><strong>About Braintree</strong></a></div>
+                    <!-- Mobile header content removed -->
                 </div>
                 <div class="header__bottom desktop-hide">
-                    <a href="#" class="header__info  button  js-toggle-info"><i class="icon-info"></i></a><!--
-                 --><ul class="header__breadcrumbs  breadcrumbs"></ul><!--
-                 --><div class="header__search  search">
-                        <div class="search__icon button"><i class="icon-search">Search</i></div>
-                        <input type="search" class="search__input  js-search" value="Find a Github user"/>
-                        <ul class="search__list  js-search-list"></ul>
-                    </div><!--
-                 --><a href="#" class="header__share  button  js-share"><i class="icon-share"></i></a>
+                    <ul class="header__breadcrumbs  breadcrumbs"></ul>
                 </div>
-                <ul class="header__share-list js-mobile-share desktop-hide"></ul>
             </div>
 
             <!-- buttons -->

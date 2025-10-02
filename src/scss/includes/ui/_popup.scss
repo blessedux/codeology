@@ -224,6 +224,36 @@
     a { display: block; }
 }
 
+.popup__links {
+    @include breakpoint(desktop) {
+        margin-top: 20px;
+        text-align: center;
+    }
+    @include breakpoint(mobile) {
+        margin-top: 15px;
+    }
+    a {
+        @include breakpoint(desktop) {
+            display: inline-block;
+            margin: 0 10px;
+        }
+        @include breakpoint(mobile) {
+            display: block;
+            margin: 5px 0;
+        }
+        
+        &.button--github {
+            font-size: 14px;
+            border: none;
+            text-decoration: none;
+            @include breakpoint(desktop) {
+                margin-top: 10px;
+                display: block;
+            }
+        }
+    }
+}
+
 
 
 .popup__closer {

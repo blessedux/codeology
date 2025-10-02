@@ -1,0 +1,35 @@
+{
+  "name": "codeology",
+  "version": "1.0.0",
+  "description": "Codeology - Visualizing GitHub codebases with WebGL",
+  "main": "index.html",
+  "scripts": {
+    "dev": "concurrently \"npm run build:watch\" \"npm run serve\"",
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "npx sass src/scss/style.scss dist/css/style.css --style=expanded --source-map",
+    "build:js": "npm run build:js:libs && npm run build:js:scripts",
+    "build:js:libs": "mkdir -p dist/js && sed '$d' src/js/libs/typed.min.js > temp_typed.js && echo '}(window.jQuery);' >> temp_typed.js && for file in src/js/libs/three.min.js src/js/libs/Detector.js src/js/libs/stats.min.js src/js/libs/seedrandom.js src/js/libs/TweenMax.min.js src/js/libs/jquery-2.1.3.js src/js/libs/jquery.history.js src/js/libs/modernizr.min.js src/js/libs/DeviceOrientationControls.js src/js/libs/ZeroClipboard.min.js src/js/libs/fastclick.js src/js/libs/omggif.js src/js/libs/iscroll.js temp_typed.js; do cat \"$file\"; echo \";\"; done > dist/js/libs.min.js && rm temp_typed.js",
+    "build:js:scripts": "mkdir -p dist/js && cat src/js/util.js src/js/config.js src/js/ascii.js src/js/objects.js src/js/api.js src/js/ui.js src/js/scene.js src/js/events.js src/js/main.js > dist/js/scripts.min.js",
+    "build:watch": "concurrently \"npx sass --watch src/scss/style.scss:dist/css/style.css --style=expanded --source-map\" \"npm run watch:js\"",
+    "watch:js": "nodemon --watch src/js --ext js --exec \"npm run build:js\"",
+    "serve": "http-server . -p 3000 -o",
+    "start": "npm run dev",
+    "clean": "rm -rf dist",
+    "setup": "npm run clean && mkdir -p dist/css dist/js dist/images dist/fonts && npm run build && cp -r src/images/* dist/images/ && cp -r src/fonts/* dist/fonts/"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "http-server": "^14.1.1",
+    "nodemon": "^3.1.10",
+    "sass": "^1.93.2"
+  },
+  "keywords": [
+    "webgl",
+    "threejs",
+    "github",
+    "visualization",
+    "code"
+  ],
+  "author": "Braintree",
+  "license": "BSD"
+}

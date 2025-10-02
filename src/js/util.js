@@ -7,23 +7,23 @@ function setupHistory() {
     var url = State.url.split("://")[1];
     if (State.hash == "/?skipTest") {
         skipFPSCheck = true;
-        url = '/featured';
+        url = '/blessedux';
     }
     var urlArr = url.split("/");
 
-    if (urlArr[3]) // if featured project
-        preload('featured', urlArr[3]);//preload(urlArr[2], urlArr[3]);
+    if (urlArr[3]) // if blessedux project
+        preload('blessedux', urlArr[3]);//preload(urlArr[2], urlArr[3]);
 
     else if (urlArr[2]) // if project
         preload(urlArr[1], urlArr[2]);
 
-    else if (urlArr[1] && urlArr[1] !== 'featured') { // if author
+    else if (urlArr[1] && urlArr[1] !== 'blessedux') { // if author
         preload(urlArr[1]);
         if (MOBILE_VERSION)
             selected = 0;
     } else {
-        preload('featured');
-        selected = Math.floor(Math.random() * 6);
+        preload('blessedux');
+        selected = Math.floor(Math.random() * 6); // Show random sculpture by default
         if (MOBILE_VERSION)
             selected = 0;
     }
@@ -146,12 +146,12 @@ function screenshotCompose() {
     var data = renderer.domElement.toDataURL('image/jpg');
 
     var url0 = currentLocation.split("/");
-    if (url0[0] == 'featured' && url0[2])
+    if (url0[0] == 'blessedux' && url0[2])
     {
         user = url0[1];
         repo = url0[2];
     } else
-    if (url0[0] == 'featured')
+    if (url0[0] == 'blessedux')
     {
         user = '';
         repo = url0[1];

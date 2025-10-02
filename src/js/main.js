@@ -40,7 +40,7 @@ function init() {
         return;
     }
 
-    prepareInput();
+    // prepareInput(); // Removed - no search functionality
 
     setupHistory();
     setupScene();
@@ -52,7 +52,7 @@ function init() {
     bindUI();
     animate();
 
-    //preload("featured");
+    //preload("blessedux");
 }
 
 function noWebGL() {

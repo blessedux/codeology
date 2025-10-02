@@ -51,15 +51,12 @@ function bindUI() {
 
     $('.js-explore, .js-close-intro, .js-home').off('click').on('click', function (e) {
         e.preventDefault();
-        $('.js-search').val("Find a GitHub user");
-        $('.js-search-list').empty();
         if (!introPlayed) {
             afterIntro();
             showGrid();
         } else {
-            if (!featured)
-                preload('featured');
-            showGrid('featured');
+            preload('blessedux');
+            showGrid('blessedux');
         }
         scrollToTop();
 
@@ -68,73 +65,15 @@ function bindUI() {
         $('.js-toggle-download.is-active').eq(0).trigger('click');
         $('.js-toggle-braintree.is-active').eq(0).trigger('click');
         $('.js-getlink.is-active').eq(0).trigger('click');
-        hideSuggestions();
 
         return false;
     });
 
-    $('.search__icon').off('click').on('click', function (e) {
-        e.preventDefault();
-        if (!$('.breadcrumbs').is(':empty')) {
-            $('.breadcrumbs').empty();
-            $('.js-search').val('').focus();
-        } else {
-            var input = $(e.currentTarget).siblings('.js-search');
-            if (!input.val() || input.val() === '' || input.val() === 'Find a GitHub user')
-                input.val('').focus();
-            else
-                input.trigger('enterKey');
-        }
+    // Search functionality removed
 
-        $('.js-share.is-active').eq(0).trigger('click');
-        $('.js-toggle-info.is-active').eq(0).trigger('click');
-        $('.js-toggle-download.is-active').eq(0).trigger('click');
-        $('.js-toggle-braintree.is-active').eq(0).trigger('click');
-        $('.js-getlink.is-active').eq(0).trigger('click');
+    // Toggle info functionality removed
 
-        return false;
-    });
-
-    $(".js-toggle-info").off('click').on("click", function (e) {
-        e.preventDefault();
-
-        $('.js-share.is-active').eq(0).trigger('click');
-        $('.js-toggle-download.is-active').eq(0).trigger('click');
-        $('.js-toggle-braintree.is-active').eq(0).trigger('click');
-        $('.js-getlink.is-active').eq(0).trigger('click');
-        hideSuggestions();
-
-        $(".js-toggle-info").toggleClass('is-active');
-        $('#info').fadeToggle(500);
-        setupPopup();
-
-        $('body').toggleClass('is-about-open');
-
-        aboutOpen = !aboutOpen;
-
-        if (!!aboutOpen && !MOBILE_VERSION) {
-            showCreature();
-        }
-
-        return false;
-    });
-
-    $(".js-toggle-braintree").off('click').on("click", function (e) {
-        e.preventDefault();
-
-        $('.js-share.is-active').eq(0).trigger('click');
-        $(".js-toggle-info.is-active").eq(0).trigger('click');
-        $('.js-toggle-download.is-active').eq(0).trigger('click');
-        $('.js-getlink.is-active').eq(0).trigger('click');
-        $(".js-toggle-braintree").toggleClass('is-active');
-        hideSuggestions();
-
-        if (!introPlayed)
-            $('.js-close-intro').trigger('click');
-        $('#braintree').fadeToggle(500);
-        setupPopup();
-        return false;
-    });
+    // Toggle braintree functionality removed
 
     $(".js-share").off('click').on("click", function (e) {
         e.preventDefault();
@@ -342,48 +281,7 @@ function setupDropdown() {
     $('.dropdown__inner').css('max-height', $(window).height() - 80);
 }
 
-function prepareInput() {
-    var elem = $(".js-search");
-
-    // Save current value of element
-    elem.data('oldVal', elem.val());
-
-    elem.bind("click", function (event) {
-        elem.val("");
-        $('.js-share.is-active').eq(0).trigger('click');
-    });
-
-    // Look for changes in the value
-    elem.bind("propertychange change keyup input paste", function (event) {
-        // If value has changed...
-        var $this = $(event.currentTarget);
-        if ($this.data('oldVal') != $this.val()) {
-
-            var value = $this.val();
-            $this.data('oldVal', value);
-
-            TweenMax.killDelayedCallsTo(showSuggestions);
-            TweenMax.delayedCall(0.6, showSuggestions, [value]);
-        }
-    });
-
-    elem.bind("blur", function (e) {
-        if ($(e.currentTarget).val() === "") {
-            elem.val("Find a GitHub user");
-            $('.js-search-list').empty();
-        }
-    });
-
-    elem.bind("enterKey", function (event) {
-        var value = $(event.currentTarget).val();
-        searchUser(value);
-    });
-
-    elem.keyup(function (e) {
-        if (e.keyCode == 13)
-            $(this).trigger("enterKey");
-    });
-}
+// Search input functionality removed
 
 function showPreloader() {
     preloaderVisible = true;
@@ -472,7 +370,7 @@ function showGrid(user) {
         afterIntro();
 
     if (featured)
-        updateLocation('featured');
+        updateLocation('blessedux');
     else if (user)
         updateLocation(user);
     else
@@ -527,7 +425,7 @@ function updateBreadcrumbs(main) {
     var html = '';
     if (!loading && globalDB && globalDB.length > 0 && (selected >= 0 || !featured) && introPlayed) {
         var db = globalDB[Math.max(selected, 0)];
-        html += '<li class="breadcrumbs__item">' + db.username + '<a href="#" data-user="featured" class="button js-reset"><i class="icon-reset"></i></a></li>';
+        html += '<li class="breadcrumbs__item">' + db.username + '<a href="#" data-user="blessedux" class="button js-reset"><i class="icon-reset"></i></a></li>';
         if (selected >= 0 && (!!main || typeof main === 'undefined')) {
             html += '<li class="breadcrumbs__item">' + db.project.substr(0, 50) + '<a href="#" data-user="' + db.username + '" class="button is-project js-reset"><i class="icon-reset"></i></a></li>';
         }
@@ -538,11 +436,11 @@ function updateBreadcrumbs(main) {
             .find('.js-reset').on('click', function (e) {
         e.preventDefault();
         var user = $(e.currentTarget).data('user');
-        if (user == 'featured' || (user !== 'featured' && !!featured)) {
+        if (user == 'blessedux' || (user !== 'blessedux' && !!featured)) {
             preload(user);
             $('.js-search').val("Find a GitHub user");
         }
-        else if (user !== 'featured') {
+        else if (user !== 'blessedux') {
             $(".js-search").val(user);
         }
         showGrid(user);
