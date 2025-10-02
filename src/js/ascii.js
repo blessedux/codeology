@@ -105,7 +105,7 @@ function resizePostprocessing() {
         uniforms: {
             inputTexture: {type: 't', value: asciiShader.rtTextureColor},
             asciiTexture: {type: 't', value: alphabetTexture},
-            hashTexture: {type: 't', value: THREE.ImageUtils.loadTexture("/dist/images/fontHash.png")}, //
+            hashTexture: {type: 't', value: THREE.ImageUtils.loadTexture("/api/codeology/dist/images/fontHash.png")}, //
             mode: {type: 'f', value: asciiMode},
             numChars: {type: 'f', value: charNum},
             rx: {type: 'f', value: renderWindow.width},

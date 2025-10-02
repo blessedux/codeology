@@ -52,7 +52,7 @@ function init() {
     bindUI();
     animate();
 
-    //preload("blessedux");
+    preload("blessedux");
 }
 
 function noWebGL() {

@@ -25,7 +25,7 @@ function afterIntro() {
         if (groups[i]) {
             TweenMax.killDelayedCallsTo(groups[i]);
             TweenMax.killTweensOf(groups[i]);
-            TweenMax.to(groups[i].scale, 0.3, {delay: 1, x: 1, y: 1, z: 1});
+            TweenMax.to(groups[i].scale, 0.6, {delay: 2, x: 1, y: 1, z: 1});
         }
     }
 }
@@ -293,7 +293,7 @@ function showPreloader() {
         if (groups[j] && introPlayed) {
             TweenMax.killDelayedCallsTo(groups[j]);
             TweenMax.killTweensOf(groups[j]);
-            TweenMax.to(groups[j].scale, 0.3 + 0.3 * Math.random(), {delay: 0.1, x: 0.001, y: 0.001, z: 0.001, ease: Back.easeIn});
+            TweenMax.to(groups[j].scale, 0.6 + 0.6 * Math.random(), {delay: 0.2, x: 0.001, y: 0.001, z: 0.001, ease: Back.easeIn});
         }
     }
     $('.loader').fadeIn();
@@ -308,7 +308,7 @@ function hidePreloader() {
         if (groups[j] && introPlayed) {
             TweenMax.killDelayedCallsTo(groups[j]);
             TweenMax.killTweensOf(groups[j]);
-            TweenMax.to(groups[j].scale, 0.3, {delay: 2 + 0.5 * Math.random(), x: 1, y: 1, z: 1, ease: Back.easeOut});
+            TweenMax.to(groups[j].scale, 0.6, {delay: 4 + 1 * Math.random(), x: 1, y: 1, z: 1, ease: Back.easeOut});
         }
     }
     $('.loader').fadeOut();
@@ -317,8 +317,8 @@ function hidePreloader() {
 
 function animatePreloader() {
     var slashes = "";
-    for (var i = 0; i < 5; i++) {
-        if (i > preloaderAnimationStep && i < preloaderAnimationStep + 5) {
+    for (var i = 0; i < 6; i++) {
+        if (i > preloaderAnimationStep && i < preloaderAnimationStep + 6) {
             slashes += "&nbsp;";
         } else {
             slashes += "/";
@@ -326,8 +326,8 @@ function animatePreloader() {
     }
     preloaderAnimationStep++;
 
-    if (preloaderAnimationStep > 4)
-        preloaderAnimationStep = -5;
+    if (preloaderAnimationStep > 5)
+        preloaderAnimationStep = -6;
 
     $('.loader').html(slashes);
 }
@@ -341,7 +341,7 @@ function showNoResults(message) {
         if (groups[j] && introPlayed) {
             TweenMax.killTweensOf(groups[j]);
             TweenMax.killDelayedCallsTo(groups[j]);
-            TweenMax.to(groups[j].scale, 0.3 + 0.3 * Math.random(), {delay: 0.1, x: 0.001, y: 0.001, z: 0.001, ease: Back.easeIn});
+            TweenMax.to(groups[j].scale, 0.6 + 0.6 * Math.random(), {delay: 0.2, x: 0.001, y: 0.001, z: 0.001, ease: Back.easeIn});
         }
     }
     $('#noresults').delay(500).fadeIn(500)

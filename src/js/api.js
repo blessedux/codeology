@@ -10,6 +10,9 @@ function preload(author, project) {
     loading = true;
     featured = false;
     loadingFeatured = false;
+    
+    // Store author globally for use in callbacks
+    window.currentAuthor = author;
     var url = SERVER + "users/" + author + "/repos?per_page=50&sort=updated";
 
     if (author && author.replace(/^\/|\/$/g, '').indexOf('/') > -1) {
@@ -119,7 +122,7 @@ function preload(author, project) {
         }
         hidePreloader();
 
-        if (!introPlayed && (author == "blessedux" || !author) && !project) {
+        if (!introPlayed && (window.currentAuthor == "blessedux" || !window.currentAuthor) && (!project || project === "index.html")) {
             intro();
         } else {
             afterIntro();
@@ -314,7 +317,7 @@ function prepare(id, staticid) {
         groups[staticid].scale.x = groups[staticid].scale.y = groups[staticid].scale.z = prevScale;
         TweenMax.killDelayedCallsTo(groups[staticid]);
         TweenMax.killTweensOf(groups[staticid]);
-        TweenMax.to(groups[staticid].scale, 0.3, {delay: 0.5 * Math.random(), x: 1, y: 1, z: 1, ease: Back.easeOut});
+        TweenMax.to(groups[staticid].scale, 0.6, {delay: 1 * Math.random(), x: 1, y: 1, z: 1, ease: Back.easeOut});
         scene.add(groups[staticid]);
 
         bug(groups[staticid], db);
